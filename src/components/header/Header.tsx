@@ -7,7 +7,7 @@ import {
 
 const Header = () => (
   <Nav>
-    <MenuItem href="#">Planets</MenuItem>
+    <MenuItem href="/">Planets</MenuItem>
   </Nav>
 );
 

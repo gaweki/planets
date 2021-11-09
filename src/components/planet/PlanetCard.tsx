@@ -28,7 +28,7 @@ const PlanetCard = React.forwardRef<any, Planet & PlanetProps>(({
   created,
   wishlist,
 }: Planet & PlanetProps, ref) => (
-  <Container href={wishlist ? '#' : `/planets/${id}`} ref={ref}>
+  <Container href={wishlist ? '#' : `/planet/${id}`} ref={ref}>
     <Header>
       <Title>{name}</Title>
       <Tag>{`Population: ${populationText(population)}`}</Tag>

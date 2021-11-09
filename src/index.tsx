@@ -9,6 +9,7 @@ import {
 import { PersistGate } from 'redux-persist/integration/react';
 import Home from './pages/home/planets/Planets';
 import Wish from './pages/home/wish/Wish';
+import Detail from './pages/detail/Detail';
 import reportWebVitals from './reportWebVitals';
 import { store, persistor } from './Store';
 
@@ -19,6 +20,7 @@ ReactDOM.render(
         <Switch>
           <Route exact path="/wishlist"><Wish /></Route>
           <Route exact path="/"><Home /></Route>
+          <Route path="/planet/:id"><Detail /></Route>
         </Switch>
       </Router>
     </PersistGate>

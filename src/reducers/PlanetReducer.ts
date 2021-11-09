@@ -1,36 +1,53 @@
 import {
-  Planet, Meta, PlanetDispatchTypes, PLANET_FAIL, PLANET_INIT, PLANET_LOADING, PLANET_SUCCESS,
+  Planet,
+  Meta,
+  PlanetDispatchTypes,
+  PLANET_INIT,
+  PLANET_LOADING,
+  PLANET_FAIL,
+  PLANET_SUCCESS,
+  PLANET_DETAIL_GET,
+  PLANET_DETAIL_SUCCESS,
+  PLANET_DETAIL_FAIL,
+  PLANET_WISHLIST_TOGGLE,
 } from '../actions/PlanetActionTypes';
 
-interface DefaultStateType {
+interface DefaultStateTypes {
     loading: boolean,
     planets: Planet[],
     wishlist: Planet[],
     meta: Meta,
+    planet?: Planet,
 }
 
-const defaultState: DefaultStateType = {
+const defaultState: DefaultStateTypes = {
   loading: false,
   planets: [],
-  wishlist: [],
   meta: {
     count: 0,
   },
+  wishlist: [],
 };
 
 const PlanetReducer = (
-  state: DefaultStateType = defaultState,
+  state: DefaultStateTypes = defaultState,
   action: PlanetDispatchTypes = { type: PLANET_INIT },
 ) => {
   switch (action.type) {
     case PLANET_INIT:
-      return defaultState;
+      return {
+        ...state,
+        planets: [],
+        whishlist: state.wishlist,
+      };
     case PLANET_LOADING:
+    case PLANET_DETAIL_GET:
       return {
         ...state,
         loading: true,
       };
     case PLANET_FAIL:
+    case PLANET_DETAIL_FAIL:
       return {
         ...state,
         loading: false,
@@ -41,11 +58,30 @@ const PlanetReducer = (
         ...state,
         loading: false,
         meta,
-        planets: !meta.previous ? _planets : [...state.planets, ..._planets],
+        planets: [...state.planets, ..._planets],
+      };
+    }
+    case PLANET_DETAIL_SUCCESS:
+      return {
+        ...state,
+        planet: action.payload,
+        loading: false,
+      };
+    case PLANET_WISHLIST_TOGGLE: {
+      const { wishlist } = state;
+      const index = wishlist.findIndex((it) => it.name === action.payload.name);
+      if (index > -1) {
+        wishlist.splice(index, 1);
+      } else {
+        wishlist.push(action.payload);
+      }
+      return {
+        ...state,
+        wishlist,
       };
     }
     default:
-      return { ...state };
+      return state;
   }
 };
 
