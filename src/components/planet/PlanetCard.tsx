@@ -4,37 +4,39 @@ import { Planet } from '../../actions/PlanetActionTypes';
 import {
   Container,
   Header,
-  Title,
+  Name,
   Tag,
   DescriptionContainer,
   Description,
 } from './PlanetCard.styles';
+
+import {
+  thousandFormat,
+  dateFormat,
+} from '../../helper';
 
 type PlanetProps = {
   id: number;
   wishlist: boolean;
 }
 
-const populationText = (text: string) => (Number.isNaN(parseInt(text, 10)) ? text : Number(text).toLocaleString('id'));
-
-const createdText = (text: string) => (new Date(text).toLocaleDateString('en-US', {
-  weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
-}));
+const getId = (url: string) => url.split('/')[5];
 
 const PlanetCard = React.forwardRef<any, Planet & PlanetProps>(({
+  created,
   id,
   name,
   population,
-  created,
+  url,
   wishlist,
 }: Planet & PlanetProps, ref) => (
-  <Container href={wishlist ? '#' : `/planet/${id}`} ref={ref}>
+  <Container href={wishlist ? `/planet/${getId(url)}` : `/planet/${id}`} ref={ref}>
     <Header>
-      <Title>{name}</Title>
-      <Tag>{`Population: ${populationText(population)}`}</Tag>
+      <Name>{name}</Name>
+      <Tag>{`Population: ${thousandFormat(population)}`}</Tag>
     </Header>
     <DescriptionContainer>
-      <Description>{`Created: ${createdText(created)}`}</Description>
+      <Description>{`Created: ${dateFormat(created)}`}</Description>
     </DescriptionContainer>
   </Container>
 ));

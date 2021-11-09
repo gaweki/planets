@@ -48,7 +48,7 @@ export const GetPlanetDetail = (id: string) => async (dispatch: Dispatch<PlanetD
     dispatch({
       type: PLANET_DETAIL_GET,
     });
-    const response = await axios.get<Planet>(`${BASE_URI}/planet/${id}`);
+    const response = await axios.get<Planet>(`${BASE_URI}/planets/${id}`);
     const { data: payload } = response;
     dispatch({
       type: PLANET_DETAIL_SUCCESS,

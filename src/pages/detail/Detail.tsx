@@ -4,6 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { GetPlanetDetail, WishlistToggle } from '../../actions/PlanetActions';
 import Header from '../../components/header/Header';
 import Star from '../../components/star/Star';
+import {
+  thousandFormat,
+  dateFormat,
+} from '../../helper';
 
 import {
   Row,
@@ -21,12 +25,6 @@ import { Planet } from '../../actions/PlanetActionTypes';
 interface RouteParams {
   id: string;
 }
-
-const thousandFormat = (text: string) => (Number.isNaN(parseInt(text, 10)) ? text : Number(text).toLocaleString('id'));
-
-const createdText = (text: string) => (new Date(text).toLocaleDateString('en-US', {
-  weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
-}));
 
 function Detail() {
   const { id } = useParams<RouteParams>();
@@ -57,7 +55,7 @@ function Detail() {
       <Header />
       { planet && (
       <Main>
-        <BackContainer onClick={() => history.push('/')}>
+        <BackContainer onClick={() => history.goBack()}>
           <BackText>
             &#8592; Back
           </BackText>
@@ -99,7 +97,7 @@ function Detail() {
           </Row>
           <Row>
             <Label>Created</Label>
-            <Label>{createdText(planet.created)}</Label>
+            <Label>{dateFormat(planet.created)}</Label>
           </Row>
 
         </CardContainer>

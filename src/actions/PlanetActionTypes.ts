@@ -8,14 +8,15 @@ export const PLANET_DETAIL_FAIL = 'PLANET_DETAIL_FAIL';
 export const PLANET_WISHLIST_TOGGLE = 'PLANET_WISHLIST_TOGGLE';
 
 export type Planet = {
-    climate: string,
-    created: string,
+    climate: string;
+    created: string;
     diameter: string;
     gravity: string;
     name: string;
     population: string;
-    residents: string,
+    residents: string;
     terrain: string;
+    url: string;
 }
 
 export type Meta = {
@@ -25,8 +26,8 @@ export type Meta = {
 }
 
 interface PayloadListSuccess {
-    planets: Planet[],
-    meta: Meta
+    planets: Planet[];
+    meta: Meta;
 }
 
 interface PlanetInit {
@@ -38,8 +39,8 @@ interface PlanetLoading {
 }
 
 interface PlanetSuccess {
-    type: typeof PLANET_SUCCESS,
-    payload: PayloadListSuccess,
+    type: typeof PLANET_SUCCESS;
+    payload: PayloadListSuccess;
 }
 
 interface PlanetFail {
@@ -51,7 +52,7 @@ interface PlanetDetail {
 }
 
 interface PlanetDetailSuccess {
-    type: typeof PLANET_DETAIL_SUCCESS,
+    type: typeof PLANET_DETAIL_SUCCESS;
     payload: Planet
 }
 
@@ -60,7 +61,7 @@ interface PlanetDetailFail {
 }
 
 interface PlanetWishlist {
-    type: typeof PLANET_WISHLIST_TOGGLE,
+    type: typeof PLANET_WISHLIST_TOGGLE;
     payload: Planet
 }
 

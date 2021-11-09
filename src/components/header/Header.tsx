@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import {
   Nav,
-  MenuItem,
+  Item,
 } from './Header.styles';
 
 const Header = () => (
   <Nav>
-    <MenuItem href="/">Planets</MenuItem>
+    <Item href="/">Planets</Item>
   </Nav>
 );
 
-export default Header;
+export default memo(Header);

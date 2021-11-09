@@ -8,13 +8,13 @@ export const Container = styled.a`
   margin: 8px 0;
   display: flex;
   flex: 1;
-  &:hover {
-    box-shadow: 0 3px 4px 0 rgba(0,0,0,0.2);
-  }
   color: black;
   text-decoration: none;
   flex-direction: column;
   padding: 16px;
+  &:hover {
+    box-shadow: 0 3px 4px 0 rgba(0,0,0,0.2);
+  }
 `;
 
 export const Header = styled.div`
@@ -23,7 +23,7 @@ export const Header = styled.div`
   justify-content: space-between;
 `;
 
-export const Title = styled.p`
+export const Name = styled.p`
   font-size: 20px;
   font-weight: bold;
   margin-top: 0;

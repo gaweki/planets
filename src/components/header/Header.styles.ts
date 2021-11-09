@@ -11,7 +11,7 @@ export const Nav = styled.div`
   text-transform: uppercase;
 `;
 
-export const MenuItem = styled.a`
+export const Item = styled.a`
   display: block;
   text-align: center;
   padding: 14px 14px;
