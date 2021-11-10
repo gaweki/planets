@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { AppStore } from '../../../Store';
 
 import PlanetCard from '../../../components/planet/PlanetCard';
+import Container from './Wishlist.styles';
 
 const Wishlist = () => {
   const planetState = useSelector((_state: AppStore) => _state.planet);
@@ -10,7 +11,7 @@ const Wishlist = () => {
   const onWishlistPage: boolean = true;
 
   return (
-    <>
+    <Container>
       {wishlist.length > 0 && wishlist.map((_planet, index) => (
         <PlanetCard
           wishlist={onWishlistPage}
@@ -19,7 +20,7 @@ const Wishlist = () => {
           key={_planet.name}
         />
       ))}
-    </>
+    </Container>
   );
 };
 

@@ -64,7 +64,7 @@ const PlanetsList = () => {
         );
       }) }
       {(!loading && !meta.next) && <LastpageBlock>Last Page List</LastpageBlock>}
-      {loading ? <Loading>Please wait ...</Loading> : '' }
+      {loading ? <Loading>Fetching List ...</Loading> : '' }
     </Container>
   );
 };

@@ -1,9 +1,5 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-
-interface TabItemProps {
-  current: string;
-}
+import { NavLink } from 'react-router-dom';
 
 export const Container = styled.div`
   display: flex;
@@ -11,7 +7,7 @@ export const Container = styled.div`
   margin: 0px 0px 10px 0px;
 `;
 
-export const TabItem = styled(Link)<TabItemProps>`
+export const TabItem = styled(NavLink)`
   display: block;
   text-align: center;
   padding: 14px 14px;
@@ -19,5 +15,4 @@ export const TabItem = styled(Link)<TabItemProps>`
   text-decoration: none;
   font-weight: bold;
   color: #9381FF;
-  border-bottom: ${(props) => (props.current === 'active' ? '5px solid #9381FF' : '')}
 `;
